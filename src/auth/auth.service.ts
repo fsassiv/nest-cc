@@ -7,8 +7,8 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { handleRequest } from 'src/utils';
+import { PrismaService } from '@prisma/prisma.service';
+import { handleRequest } from '@utils/index';
 import { doVerifyPassword, generateHash } from './auth.utils';
 import { AuthDto } from './dto';
 
