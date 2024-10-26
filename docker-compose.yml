@@ -1,15 +1,40 @@
-version: '3.8'
 services:
-  dev-db:
+  postgres:
+    container_name: postgres_container
     image: postgres:13
-    ports:
-      - 5434:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
       POSTGRES_DB: nest
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - '5434:5432'
     networks:
       - fsadevnw
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: 321
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+    ports:
+      - '8888:80'
+    networks:
+      - fsadevnw
+    restart: unless-stopped
 
 networks:
   fsadevnw:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
