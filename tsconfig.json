@@ -20,7 +20,7 @@
     "paths": {
       "@utils/*": ["src/utils/*"],
       "@prisma/*": ["src/prisma/*"],
-      "@auth/*": ["src/auth/*"]
+      "@auth/*": ["src/authcore/auth/*"]
     }
   }
 }
